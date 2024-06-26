@@ -1,8 +1,10 @@
 import Title from "./Components/Title";
 
 function App() {
+  let samplePropsName = 'farnoosh';
+  let samplePropsLastName = 'ramezani';
   return (
-    <Title />
+    <Title name={samplePropsName} lastName={samplePropsLastName}/>
   );
 }
 
