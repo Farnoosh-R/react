@@ -1,50 +1,58 @@
 import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Hooks = () => {
 
-    const [count, setCount] = useState(0);
-    const [counter5, setCounter5] = useState(0);
-    const [person, setPerson] = useState({name: '', age: ''});
-    const [items, setItems] = useState(['red', 'green', 'blue']);
-    const [name, setName] = useState('');
+// const [count, setCount] = useState(0);
+// const [name, setName] = useState('');
+// const [size, setSize] = useState(window.innerWidth);
+const [posts, setPosts] = useState(null);
+const [loading, setLoading] = useState(true);
+const [error, setError] = useState('');
 
-    const handleClick = () => {
+// useEffect(() => {
+//     console.log('hi');
+// }, [count]);
 
-        setCount(count + 1);
 
-    }
-    const handleIncrementFive = () => {
-        for (let i = 0; i<5; i++){
-            setCounter5((preState) => preState + 1);
-        }
-    }
+// const checkSize = () => {
+//     setSize(window.innerWidth);
+// }
 
-    const handleAddName = () => {
-        setItems([...items, name]);
-    }
+// useEffect(() => {
+//     window.addEventListener('resize', checkSize);
+
+//     return () => {
+//         console.log('clean up');
+//         window.removeEventListener('resize', checkSize);
+//     }
+// })
+
+useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(res => res.json())
+    .then(data => {
+        setPosts(data);
+        setLoading(false);
+    })
+    .catch(err => {
+        console.log(err.message)
+        setError(err.message)
+        setLoading(false)
+    })
+})
 
     return(
         <div>
-        <button onClick={handleClick}>count {count}</button>
-        <button onClick={handleIncrementFive}>count5 {counter5}</button>
-        <input type="text" onChange={(e) => setPerson({...person, name: e.target.value})}/>name
-        <input type="text" onChange={(e) => setPerson({...person, age: e.target.value})}/>age
-        <h2>name: {person.name}</h2>
-        <h2>name: {person.age}</h2>
 
-        <input type="text" onChange={(e) => setName(e.target.value)} />
-        <button onClick={handleAddName}>Add Name</button>
-        <ul>
-            {items.map(item =>{
-                return (
-                <div>
-                <li>{item}</li> 
-                <span>dc</span>
-            </div>
-            )
-            })}
-        </ul>
+        {/*         <button onClick={() => setCount(count + 1)}>count {count}</button>
+        <h2>size: {size} px</h2>*/}
+        {error && <h3>{error}</h3>}
+        {loading ? <h2>loading...</h2> : ''}
+        {posts == null ? '' : posts.map(post => (
+            <p key={post.id}>{post.title}</p>
+        ))}
+
         </div>
     );
 
