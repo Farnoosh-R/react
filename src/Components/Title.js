@@ -47,7 +47,7 @@ const Title = (props) => {
       }}>click2</button>
 
       <h2>name: {props.name}</h2>
-      <h2>name: {props.lastName}</h2>
+      <h2>lastName: {props.lastName}</h2>
       <button onClick={() => props.handleClick3('farnoosh')}>click me</button>
       {props.children}
     </div>
