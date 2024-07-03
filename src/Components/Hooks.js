@@ -1,4 +1,5 @@
 import { useReducer } from "react";
+import React from "react";
 
 
 // const initialstate = {
@@ -49,4 +50,4 @@ const [countTwo, dispatchTwo] = useReducer(reducer, initialstate);
 
 
 
-export default Hooks;
+export default React.memo(Hooks);

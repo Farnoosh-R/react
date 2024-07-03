@@ -3,6 +3,7 @@ import Form from "./Components/Form";
 import Hooks from "./Components/Hooks";
 import CompA from "./Components/CompA";
 import React from "react";
+import Counter from "./Components/Counter";
 
 export const UserContext = React.createContext();
 
@@ -25,6 +26,7 @@ function App() {
       <UserContext.Provider value={'farnoosh'}>
       <CompA/>
       </UserContext.Provider>
+      <Counter />
     </div>
   );
 }
