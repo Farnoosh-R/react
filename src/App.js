@@ -4,6 +4,7 @@ import Hooks from "./Components/Hooks";
 import CompA from "./Components/CompA";
 import React from "react";
 import Counter from "./Components/Counter";
+import Login from "./Components/Login";
 
 export const UserContext = React.createContext();
 
@@ -27,6 +28,7 @@ function App() {
       <CompA/>
       </UserContext.Provider>
       <Counter />
+      <Login />
     </div>
   );
 }

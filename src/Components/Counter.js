@@ -27,7 +27,7 @@ const Counter = () => {
         <div>
             <h3>counter</h3>
             <button onClick={incrementOne}>count: {counterA}</button>
-            <span>{isEven() ? 'even' : 'odd'}</span>
+            <span>{isEven ? 'even' : 'odd'}</span>
             <button onClick={incrementTwo}>count: {counterB}</button>
         </div>
     );
