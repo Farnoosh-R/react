@@ -5,6 +5,7 @@ import CompA from "./Components/CompA";
 import React from "react";
 import Counter from "./Components/Counter";
 import Login from "./Components/Login";
+import CounterCustomHook from "./Components/CounterCustomHook";
 
 export const UserContext = React.createContext();
 
@@ -29,6 +30,7 @@ function App() {
       </UserContext.Provider>
       <Counter />
       <Login />
+      <CounterCustomHook />
     </div>
   );
 }
